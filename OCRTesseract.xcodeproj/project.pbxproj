@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		834C1E6B345414A47C0F27EE /* Pods_OCRTesseract.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DE936BB08A1EEB479CA289C /* Pods_OCRTesseract.framework */; };
+		D51BA8D82129F5210050A528 /* TPKeyboardAvoiding in Resources */ = {isa = PBXBuildFile; fileRef = D51BA8D72129F5210050A528 /* TPKeyboardAvoiding */; };
+		D51BA8DA212A0A320050A528 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51BA8D9212A0A320050A528 /* Constants.swift */; };
+		D51BA8DC212A0A420050A528 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51BA8DB212A0A420050A528 /* APIManager.swift */; };
 		D53FB82321282688003F5C88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53FB82221282688003F5C88 /* AppDelegate.swift */; };
 		D53FB82821282688003F5C88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D53FB82621282688003F5C88 /* Main.storyboard */; };
 		D53FB82B21282688003F5C88 /* OCRTesseract.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D53FB82921282688003F5C88 /* OCRTesseract.xcdatamodeld */; };
@@ -20,6 +23,9 @@
 /* Begin PBXFileReference section */
 		1DE936BB08A1EEB479CA289C /* Pods_OCRTesseract.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OCRTesseract.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B984BA7917DCA44480DF745A /* Pods-OCRTesseract.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OCRTesseract.release.xcconfig"; path = "Pods/Target Support Files/Pods-OCRTesseract/Pods-OCRTesseract.release.xcconfig"; sourceTree = "<group>"; };
+		D51BA8D72129F5210050A528 /* TPKeyboardAvoiding */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TPKeyboardAvoiding; sourceTree = "<group>"; };
+		D51BA8D9212A0A320050A528 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D51BA8DB212A0A420050A528 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		D53FB81F21282688003F5C88 /* OCRTesseract.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OCRTesseract.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D53FB82221282688003F5C88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D53FB82721282688003F5C88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -61,6 +67,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D51BA8D62129F5020050A528 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				D51BA8D72129F5210050A528 /* TPKeyboardAvoiding */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
 		D53FB81621282687003F5C88 = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +96,7 @@
 		D53FB82121282688003F5C88 /* OCRTesseract */ = {
 			isa = PBXGroup;
 			children = (
+				D51BA8D62129F5020050A528 /* Libraries */,
 				D53FB82221282688003F5C88 /* AppDelegate.swift */,
 				D53FB8372128B5DB003F5C88 /* HomeViewController.swift */,
 				D53FB82621282688003F5C88 /* Main.storyboard */,
@@ -90,6 +105,8 @@
 				D53FB82E2128268A003F5C88 /* LaunchScreen.storyboard */,
 				D53FB8312128268A003F5C88 /* Info.plist */,
 				D53FB82921282688003F5C88 /* OCRTesseract.xcdatamodeld */,
+				D51BA8DB212A0A420050A528 /* APIManager.swift */,
+				D51BA8D9212A0A320050A528 /* Constants.swift */,
 			);
 			path = OCRTesseract;
 			sourceTree = "<group>";
@@ -158,6 +175,7 @@
 				D53FB83B2128B8B0003F5C88 /* tessdata in Resources */,
 				D53FB82D2128268A003F5C88 /* Assets.xcassets in Resources */,
 				D53FB82821282688003F5C88 /* Main.storyboard in Resources */,
+				D51BA8D82129F5210050A528 /* TPKeyboardAvoiding in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,22 +189,30 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-OCRTesseract/Pods-OCRTesseract-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
 				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
 				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
 				"${BUILT_PRODUCTS_DIR}/MotionAnimator/MotionAnimator.framework",
 				"${BUILT_PRODUCTS_DIR}/MotionInterchange/MotionInterchange.framework",
 				"${BUILT_PRODUCTS_DIR}/MotionTransitioning/MotionTransitioning.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/TesseractOCRiOS/TesseractOCR.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CropViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionAnimator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionInterchange.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionTransitioning.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TesseractOCR.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,7 +247,9 @@
 			files = (
 				D53FB82B21282688003F5C88 /* OCRTesseract.xcdatamodeld in Sources */,
 				D53FB82321282688003F5C88 /* AppDelegate.swift in Sources */,
+				D51BA8DC212A0A420050A528 /* APIManager.swift in Sources */,
 				D53FB8382128B5DB003F5C88 /* HomeViewController.swift in Sources */,
+				D51BA8DA212A0A320050A528 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +310,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -342,6 +371,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -370,10 +400,7 @@
 				DEVELOPMENT_TEAM = 55NF4H43TB;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = OCRTesseract/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.romit.OCRTesseract;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -390,10 +417,7 @@
 				DEVELOPMENT_TEAM = 55NF4H43TB;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = OCRTesseract/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.romit.OCRTesseract;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

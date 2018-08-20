@@ -8,73 +8,40 @@
 
 import UIKit
 import TesseractOCR
-import MaterialComponents
 import CropViewController
 
 class HomeViewController: UIViewController, CropViewControllerDelegate {
-  @IBOutlet weak var submitButton: MDCButton!
+
   
+  //MARK:- IBOutlets
   @IBOutlet weak var uploadImageButon: UIButton!
-  @IBOutlet weak var idImageView: UIImageView!
-  @IBOutlet weak var tesseractView: UIView!
   @IBOutlet weak var overlayView: UIView!
   @IBOutlet weak var smallDocImageView: UIImageView!
-  @IBOutlet weak var metalsTextView: UITextView!
-  @IBOutlet weak var allergiesTextView: UITextView!
+  @IBOutlet weak var recognizedTextView: UITextView!
   @IBOutlet weak var femaleButton: UIButton!
   @IBOutlet weak var maleButton: UIButton!
-  @IBOutlet weak var dateOfbirthTextField: MDCTextField!
-  @IBOutlet weak var lastNameTextField: MDCTextField!
-  @IBOutlet weak var firstNameTextField: MDCTextField!
+  @IBOutlet weak var dateOfbirthTextField: UITextField!
+  @IBOutlet weak var lastNameTextField: UITextField!
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-  @IBOutlet weak var takePhotoButton: MDCButton!
-  @IBOutlet weak var recognizedTextView: MDCIntrinsicHeightTextView!
-  
-  var textFieldControllerFloating = MDCTextInputControllerUnderline()
-  var textFieldControllerFloating2 = MDCTextInputControllerUnderline()
-  var textFieldControllerFloating3 = MDCTextInputControllerUnderline()
-  
+  @IBOutlet weak var firstNameTextField: UITextField!
+
+  //MARK:- VAriables
   let tes = G8Tesseract(language: "eng")
-  let buttonScheme = MDCButtonScheme()
   var gender = ""
   
+  //MARK:- Lifecycle methods
   override func viewDidLoad() {
         super.viewDidLoad()
         setTextFields()
-    activityIndicator.alpha = 0
+        activityIndicator.alpha = 0
     }
   
   //MARK:- Default setup methods
   func setTextFields() {
-   MDCContainedButtonThemer.applyScheme(buttonScheme, to: submitButton)
    // MDCTextButtonThemer.applyScheme(buttonScheme, to: submitButton)
-    allergiesTextView.layer.borderColor = UIColor.gray.cgColor
-    allergiesTextView.layer.borderWidth = 1
-    allergiesTextView.layer.cornerRadius = 4
-    metalsTextView.layer.borderColor = UIColor.gray.cgColor
-    metalsTextView.layer.borderWidth = 1
-    metalsTextView.layer.cornerRadius = 4
-    
-    firstNameTextField.translatesAutoresizingMaskIntoConstraints = false
-    firstNameTextField.placeholder = "Name"
-    firstNameTextField.isEnabled = true
-    firstNameTextField.isUserInteractionEnabled = true
-    textFieldControllerFloating = MDCTextInputControllerUnderline(textInput: firstNameTextField)
-    textFieldControllerFloating.placeholderText = "First name"
-    
-    lastNameTextField.translatesAutoresizingMaskIntoConstraints = false
-    lastNameTextField.placeholder = "Name"
-    lastNameTextField.isEnabled = true
-    lastNameTextField.isUserInteractionEnabled = true
-    textFieldControllerFloating2 = MDCTextInputControllerUnderline(textInput: lastNameTextField)
-    textFieldControllerFloating2.placeholderText = "Last Name"
-    
-    dateOfbirthTextField.translatesAutoresizingMaskIntoConstraints = false
-    dateOfbirthTextField.placeholder = "Date of birth (dd/mm/yyyy)"
-    dateOfbirthTextField.isEnabled = true
-    dateOfbirthTextField.isUserInteractionEnabled = true
-    textFieldControllerFloating3 = MDCTextInputControllerUnderline(textInput: dateOfbirthTextField)
-    textFieldControllerFloating3.placeholderText = "Date of birth (dd/mm/yyyy)"
+    recognizedTextView.layer.borderColor = UIColor.gray.cgColor
+    recognizedTextView.layer.borderWidth = 1
+    recognizedTextView.layer.cornerRadius = 4
   }
   
   //MARK:- IBActions
@@ -111,16 +78,6 @@ class HomeViewController: UIViewController, CropViewControllerDelegate {
     print("First Name is \(firstNameTextField.text!)")
     print("FLast Name is \(lastNameTextField.text!)")
     print("DOB is \(dateOfbirthTextField.text!)")
-    print("Allergies: \(allergiesTextView.text)")
-    print("Metals in body: \(metalsTextView.text)")
-    let params : [String:Any] = [:]
-    APIManager.sharedManager.submitData(params) { (success, data) in
-      if success {
-        //success
-      }else {
-        //failure
-      }
-    }
     self.alertify(message: "Successfully submitted", in: self, success: true)
   }
   
@@ -160,6 +117,7 @@ class HomeViewController: UIViewController, CropViewControllerDelegate {
       print(tesseract.recognizedText)
       uploadImageButon.setTitle("Upload New", for: .normal)
       findData(stringData: tesseract.recognizedText)
+      recognizedTextView.text = tesseract.recognizedText
     }
     self.overlayView.alpha = 0
     activityIndicator.stopAnimating()
@@ -167,6 +125,7 @@ class HomeViewController: UIViewController, CropViewControllerDelegate {
   }
   
   func findData(stringData : String) {
+    //Method to find extract data such as name, dob
     print("found")
     var wordsArray = stringData.components(separatedBy: "\n")
     print("wordsArray is \(wordsArray)")

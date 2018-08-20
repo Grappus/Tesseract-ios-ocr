@@ -8,6 +8,6 @@ This project uses following three external libraries:
 
 3)https://github.com/TimOliver/TOCropViewController
 
-Example:
+<h2>Example:</h2>
  
 To run the example project, clone the repo, and run pod install first after initializing pod

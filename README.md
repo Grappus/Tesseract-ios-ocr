@@ -27,6 +27,6 @@ You can find the entire tutorials on Raywenderlich's   <a href="https://www.rayw
 
 1)Autofill basic forms(such as Name, DOB etc) from user ID (eg:- Password, Driving licence etc)
 
-2)Better image processing to increased accuracy
+2)Better image processing for increased accuracy
 
 
